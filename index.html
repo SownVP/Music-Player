@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="./main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="method.js">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hurricane&family=Oswald:wght@300;400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,300&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400&display=swap"
+        rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="header">
+                <div class="music_nowPlaying_wrapper flex__center">
+                    <div class="music_nowPlaying_image">
+                        <img class="music_nowPlaying_coverImage" src="" alt="">
+                        <img class="music_nowPlaying_thumbnail" src="" alt="">
+                    </div>
+                    <div class="music_nowPlaying">
+                        <p class="music_nowPlaying_name"></p>
+                        <p class="music_nowPlaying_artist"></p>
+                    </div>
+                </div>
+                <div class="music_control">
+                    <ul class="music_control_btnList flex__center">
+                        <li class="music_control_btnItem music_control-repeat" >
+                            <i class="fa-solid fa-repeat"></i>
+                        </li>
+                        <li class="music_control_btnItem music_control-backward">
+                            <i class="fas fa-step-backward"></i>
+                        </li>
+                        <li class="music_control_btnItem music_control-play flex__center">
+                            <i class="fas fa-pause music_control-pauseIcon" style="display: none;"></i>
+                            <i class="fa-solid fa-play music_control-playIcon"></i>
+                        </li>
+                        <li class="music_control_btnItem music_control-forward">
+                            <i class="fas fa-step-forward"></i>
+                        </li>
+                        <li class="music_control_btnItem music_control-random">
+                            <i class="fas fa-random"></i>
+                        </li>
+                    </ul>
+                    <audio class="music_nowPlaying_audio" id="" style = "display: none;" src=""></audio>
+                    <div class="music_control_progress_wrapper">
+                        <span class="progressTime">
+                            <span class="progressTime_minute">0</span>
+                            :
+                            <span class="progressTime_second">00</span>
+                        </span>
+                        <input class="music_control_progress" type="range" value="0" step="1" min="0" max="100">
+                        <span class="music_nowPlaying_duration"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="body">
+                <div class="comment">
+                    <ul class="commentList">
+                        <li class="commentList_item">bình luận</li>
+                        <li class="commentList_item">bình luận</li>
+                        <li class="commentList_item">bình luận</li>
+                        <li class="commentList_item">bình luận</li>
+                    </ul>
+                </div>
+                <ul class="playlist">
+                </ul>
+           </div>
+        </div>
+    </div>
+    <script src="./main.js" type="module"></script>
+</body>
+</html> 
