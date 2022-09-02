@@ -22,6 +22,16 @@ html{
   justify-content: center;
   align-items: center;
 }
+.loading{
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgb(0 0  0 / 0.6);
+  z-index: 2;
+}
+.loading_icon{
+  font-size: 38px;
+  color: #fff;
+}
 .container{
   background: #f5f5f5;
 }
@@ -53,13 +63,17 @@ html{
   position: absolute;
   bottom: 0;
   left: 10%;
-  transform: translateY(50%);
   width: 200px;
   height: 200px;
   border-radius: 100rem;
   object-fit: cover;
   object-position: center;
   border: 2px solid #000;
+  transform: translateY(50%);
+}
+@keyframes rotate{
+  from{ transform: translateY(50%) rotate(-360deg); }
+  to{ transform: translateY(50%) rotate(360deg); }
 }
 .music_nowPlaying_title{
   margin-left: 8px;
@@ -128,9 +142,7 @@ html{
   margin-top: 60px;
   padding-bottom: 20px;
 }
-.comment{
-  width: 70%;
-}
+
 .playlist{
   width: 30%;
   margin-top: -7px;
@@ -180,5 +192,30 @@ html{
   align-items: center;
   font-size: 15px;
   opacity: 0.8;
+}
+.comment{
+  width: 70%;
+  margin-right: 16px;
+}
+.commentInput_wrapper{
+  display: flex;  
+}
+.commentInput_avtUser{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+.commentInput{
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  background: transparent;
+  border-bottom: 1px solid #ccc;
+}
+.commentList{
+  list-style: none;
+  margin-top: 16px;
 }
 

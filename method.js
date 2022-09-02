@@ -1,6 +1,28 @@
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 const audio = $('.music_nowPlaying_audio');
+const cdRotate =  
+    $('.music_nowPlaying_thumbnail').animate(
+        [
+            { transform: 'translateY(50%) rotate(360deg)' }
+        ],
+        {
+            duration: 50000,
+            iterations: Infinity
+        }
+    )
+cdRotate.pause();
+const loadingRotate = 
+        $('.loading_icon').animate(
+            [
+                { transform: 'translateY(50%) rotate(-360deg)' },
+                { transform: 'translateY(50%) rotate(360deg)' }
+            ],
+            {
+                duration: 3000,
+                iterations: Infinity
+            }
+        )
 let setProgress_interval;
 import {songs} from "./main.js";
 const setInfor = {
@@ -31,13 +53,13 @@ const setInfor = {
       }).join('');
     },
     songIsPlaying(songIsPlaying){
-      $('.music_nowPlaying_name').innerText = songIsPlaying.name;
-      $('.music_nowPlaying_artist').innerText = songIsPlaying.artist;
-      $('.music_nowPlaying_coverImage').setAttribute('src', songIsPlaying.coverImage);
-      $('.music_nowPlaying_thumbnail').setAttribute('src', songIsPlaying.thumbnail); 
-      $('.music_nowPlaying_duration').innerText = songIsPlaying.duration;
-        audio.setAttribute('src', songIsPlaying.audio)
-        audio.setAttribute('id', songIsPlaying.id)
+        audio.setAttribute('src', songIsPlaying.audio);
+        audio.setAttribute('id', songIsPlaying.id);
+        $('.music_nowPlaying_name').innerText = songIsPlaying.name;
+        $('.music_nowPlaying_artist').innerText = songIsPlaying.artist;
+        $('.music_nowPlaying_coverImage').setAttribute('src', songIsPlaying.coverImage);
+        $('.music_nowPlaying_thumbnail').setAttribute('src', songIsPlaying.thumbnail); 
+        $('.music_nowPlaying_duration').innerText = songIsPlaying.duration;
     }
   }
 const setProgress = {
@@ -45,13 +67,20 @@ const setProgress = {
         let minute = Math.floor(audio.currentTime.toFixed() / 60);
         let second = audio.currentTime.toFixed() - 60 * minute;
         let progressValue = (audio.currentTime / audio.duration * 100);
-        this.setProgressTime(second, minute);
+        if (isNaN(progressValue)){
+            progressValue = 0;
+        }
         this.setProgressBar(progressValue);
+        this.setProgressTime(second, minute);
         setProgress_interval = setInterval(()=>{
-            if(`${minute}:${second}` === $('.music_nowPlaying_duration').innerText){
-                audioControl.pause();
-                setInfor.songIsPlaying(songs[Number(audio.getAttribute('id'))]);
-                audioControl.play();
+            if(`${minute}:${second}` == $('.music_nowPlaying_duration').innerText){
+                this.stop();
+                if(audio.loop === false){
+                    cdRotate.pause();
+                    changeSong(Number(audio.getAttribute('id')));
+                }else{
+                    audioControl.play();
+                }
                 return;
             }
             ++second;
@@ -62,7 +91,7 @@ const setProgress = {
             this.setProgressTime(second, minute);
             progressValue = (audio.currentTime / audio.duration * 100);
             this.setProgressBar(progressValue);
-      }, 1000)
+        }, 1000)
     },
     stop(){
       clearInterval(setProgress_interval)
@@ -75,7 +104,7 @@ const setProgress = {
         $('.progressTime_second').innerText = second;
     },
     setProgressBar(progressValue){
-        $('.music_control_progress').setAttribute('value', progressValue);
+        $('.music_control_progress').value = progressValue;
     }
   }
 const audioControl = {
@@ -84,23 +113,23 @@ const audioControl = {
       $('.music_control-pauseIcon').style.display = 'block';
       $('.music_control-playIcon').style.display = 'none';
       setProgress.run();
+      cdRotate.play();
     },
     pause(){
       audio.pause();
       $('.music_control-pauseIcon').style.display = 'none';
       $('.music_control-playIcon').style.display = 'block';
+      $('.music_nowPlaying_thumbnail').style.animation = ''
       setProgress.stop();
+      cdRotate.pause();
     }
   }
-  function changeSong(){
-    $$('.song').forEach((songHtml, i)=>{
-      songHtml.onclick = ()=>{
-        audioControl.pause();
-        setInfor.songIsPlaying(songs[i])
-        audioControl.play();
-        $('.progressTime_minute').innerText = '0';
-        $('.progressTime_second').innerText = '00';
-      }
-    })
+  function changeSong(i){
+    if(i >= songs.length){
+        i = 0;
+    }
+    setProgress.stop();
+    setInfor.songIsPlaying(songs[i])
+    audioControl.play();
   }
 export {setInfor, audioControl, setProgress, changeSong};

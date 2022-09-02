@@ -15,6 +15,9 @@
     <title>Document</title>
 </head>
 <body>
+    <div class="loading flex__center">
+        <i class="fa-solid fa-spinner loading_icon"></i>
+    </div>
     <div class="container">
         <div class="content">
             <div class="header">
@@ -30,17 +33,17 @@
                 </div>
                 <div class="music_control">
                     <ul class="music_control_btnList flex__center">
-                        <li class="music_control_btnItem music_control-repeat" >
+                        <li class="music_control_btnItem music_control-repeat" title="Lặp lại(M)">
                             <i class="fa-solid fa-repeat"></i>
                         </li>
-                        <li class="music_control_btnItem music_control-backward">
+                        <li class="music_control_btnItem music_control-backward" title="Trước(F)">
                             <i class="fas fa-step-backward"></i>
                         </li>
-                        <li class="music_control_btnItem music_control-play flex__center">
+                        <li class="music_control_btnItem music_control-play flex__center" title="Dừng/jPhát(Space)">
                             <i class="fas fa-pause music_control-pauseIcon" style="display: none;"></i>
                             <i class="fa-solid fa-play music_control-playIcon"></i>
                         </li>
-                        <li class="music_control_btnItem music_control-forward">
+                        <li class="music_control_btnItem music_control-forward" title="Tiếp theo(J)">
                             <i class="fas fa-step-forward"></i>
                         </li>
                         <li class="music_control_btnItem music_control-random">
@@ -55,17 +58,21 @@
                             <span class="progressTime_second">00</span>
                         </span>
                         <input class="music_control_progress" type="range" value="0" step="1" min="0" max="100">
+
                         <span class="music_nowPlaying_duration"></span>
                     </div>
                 </div>
             </div>
             <div class="body">
                 <div class="comment">
+                    <div class="commentInput_wrapper">
+                        <img class="commentInput_avtUser" src="https://scontent.fhan5-9.fna.fbcdn.net/v/t39.30808-6/302608725_1853926941641249_7531420566779167612_n.png?stp=cp1_dst-png&_nc_cat=109&ccb=1-7&_nc_sid=730e14&_nc_ohc=N_PAhh8LMgoAX_jfVkx&_nc_ht=scontent.fhan5-9.fna&oh=00_AT8vsaldadYJhSrUHDB5SmLAFK98_vUuoRmSCK7eMuNcTQ&oe=63144CFA" alt="">
+                        <input type="text" class="commentInput" placeholder="Thêm bình luận...">
+                    </div>
                     <ul class="commentList">
-                        <li class="commentList_item">bình luận</li>
-                        <li class="commentList_item">bình luận</li>
-                        <li class="commentList_item">bình luận</li>
-                        <li class="commentList_item">bình luận</li>
+                        <li class="commentList_item">
+
+                        </li>
                     </ul>
                 </div>
                 <ul class="playlist">
