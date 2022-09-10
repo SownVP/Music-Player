@@ -12,12 +12,14 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Hurricane&family=Oswald:wght@300;400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,300&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400&display=swap"
         rel="stylesheet">
-    <title>Document</title>
+    <title>Sound</title>
 </head>
 <body>
     <div class="loading flex__center">
         <i class="fa-solid fa-spinner loading_icon"></i>
     </div>
+    <ul class="toast_list">
+    </ul>
     <div class="container">
         <div class="content">
             <div class="header">
@@ -39,26 +41,30 @@
                         <li class="music_control_btnItem music_control-backward" title="Trước(F)">
                             <i class="fas fa-step-backward"></i>
                         </li>
-                        <li class="music_control_btnItem music_control-play flex__center" title="Dừng/jPhát(Space)">
+                        <li class="music_control_btnItem music_control-play flex__center" title="Dừng/Phát(Space)">
                             <i class="fas fa-pause music_control-pauseIcon" style="display: none;"></i>
                             <i class="fa-solid fa-play music_control-playIcon"></i>
                         </li>
                         <li class="music_control_btnItem music_control-forward" title="Tiếp theo(J)">
                             <i class="fas fa-step-forward"></i>
                         </li>
-                        <li class="music_control_btnItem music_control-random">
+                        <li class="music_control_btnItem music_control-random" title="Ngẫu nhiên(R)">
                             <i class="fas fa-random"></i>
                         </li>
                     </ul>
-                    <audio class="music_nowPlaying_audio" id="" style = "display: none;" src=""></audio>
+                    <audio class="music_nowPlaying_audio" id="" style = "display: none;" src="" random="false"></audio>
                     <div class="music_control_progress_wrapper">
                         <span class="progressTime">
                             <span class="progressTime_minute">0</span>
                             :
                             <span class="progressTime_second">00</span>
                         </span>
+                        <div class = "music_control_volume_wrapper">
+                            <i class="fa-solid fa-volume-high music_control_volume_icon music_control_volume_icon_default" title="Mute(M)"></i>
+                            <i class="fa-solid fa-volume-xmark music_control_volume_icon music_control_volume_icon_xmark" style="display: none" title="Unmute(M)"></i>
+                            <input class="music_control_volume" type="range" value="100" step="1" min="0" max="100">
+                        </div>
                         <input class="music_control_progress" type="range" value="0" step="1" min="0" max="100">
-
                         <span class="music_nowPlaying_duration"></span>
                     </div>
                 </div>
@@ -70,14 +76,71 @@
                         <input type="text" class="commentInput" placeholder="Thêm bình luận...">
                     </div>
                     <ul class="commentList">
-                        <li class="commentList_item">
-
+                        <li class="commentItem">
+                            <span class="commentItem_avtUser_wrapper">
+                                <img src="https://vnn-imgs-a1.vgcloud.vn/znews-photo.zadn.vn/w860/Uploaded/ayhunkt/2022_01_30/fatcat.png" alt="" class="commentItem_avtUser">
+                            </span>
+                            <span class="commentItem_content_wrapper">
+                                <p class="commentItem_nameUser">Trịnh Văn Sơn</p>
+                                <p class="commentItem_content">It's lit 🔥</p>
+                            </span>
+                        </li>
+                        <li class="commentItem">
+                            <span class="commentItem_avtUser_wrapper">
+                                <img src="https://bizweb.dktcdn.net/100/307/433/articles/87126502-2509242206005371-2073523065622364160-n.jpg?v=1627806241047" alt="" class="commentItem_avtUser">
+                            </span>
+                            <span class="commentItem_content_wrapper">
+                                <p class="commentItem_nameUser">FamiWav</p>
+                                <p class="commentItem_content">Bài này cháy quá :3</p>
+                            </span>
                         </li>
                     </ul>
                 </div>
                 <ul class="playlist">
                 </ul>
            </div>
+           <div class="footer">
+                <span class="flex__center">
+                    <img class="music_nowPlaying_thumbnail" src="" alt="">
+                    <span class="">
+                        <p class="music_nowPlaying_name"></p>
+                        <p class="music_nowPlaying_artist"></p>
+                    </span>
+                </span>
+               <div class="music_control">
+                <ul class="music_control_btnList flex__center">
+                    <li class="music_control_btnItem music_control-repeat" title="Lặp lại(L)">
+                        <i class="fa-solid fa-repeat"></i>
+                    </li>
+                    <li class="music_control_btnItem music_control-backward" title="Trước(F)">
+                        <i class="fas fa-step-backward"></i>
+                    </li>
+                    <li class="music_control_btnItem music_control-play flex__center" title="Dừng/Phát(Space)">
+                        <i class="fas fa-pause music_control-pauseIcon" style="display: none;"></i>
+                        <i class="fa-solid fa-play music_control-playIcon"></i>
+                    </li>
+                    <li class="music_control_btnItem music_control-forward" title="Tiếp theo(J)">
+                        <i class="fas fa-step-forward"></i>
+                    </li>
+                    <li class="music_control_btnItem music_control-random" title="Ngẫu nhiên(R)">
+                        <i class="fas fa-random"></i>
+                    </li>
+                </ul>
+                <div class="music_control_progress_wrapper">
+                    <span class="progressTime">
+                        <span class="progressTime_minute">0</span>
+                        :
+                        <span class="progressTime_second">00</span>
+                    </span>
+                    <div class = "music_control_volume_wrapper">
+                        <i class="fa-solid fa-volume-high music_control_volume_icon music_control_volume_icon_default" title="Mute(M)"></i>
+                        <i class="fa-solid fa-volume-xmark music_control_volume_icon music_control_volume_icon_xmark" style="display: none" title="Unmute("></i>
+                        <input class="music_control_volume" type="range" value="100" step="1" min="0" max="100">
+                    </div>
+                    <input class="music_control_progress" type="range" value="0" step="1" min="0" max="100">
+                    <span class="music_nowPlaying_duration"></span>
+                </div>
+            </div>
         </div>
     </div>
     <script src="./main.js" type="module"></script>
