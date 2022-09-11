@@ -179,7 +179,11 @@ function addEvent(){
     }
   })
   function backwardSong(){
-    changeSong(audio.getAttribute('id') - 2)
+    if(audio.getAttribute('id') == 1){
+      changeSong(songs.length - 1)
+    }else{
+      changeSong(audio.getAttribute('id') - 2)
+    }
   }
   function forwardSong(){
     changeSong(audio.getAttribute('id'))
